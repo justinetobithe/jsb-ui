@@ -490,6 +490,47 @@ export default function Page() {
                     </Reveal>
                 </Section>
             </section>
+
+            <section className="relative bg-white">
+                <Section className="py-16">
+                    <Reveal>
+                        <div className="text-center">
+                            <div className="text-2xl font-semibold tracking-tight text-navy-950 md:text-3xl">
+                                Exclusive Offers
+                            </div>
+                            <div className="mt-2 text-sm text-navy-700">
+                                Discover curated promotions designed to elevate your stay.
+                            </div>
+                        </div>
+                    </Reveal>
+
+                    <div className="mt-10 grid gap-6 md:grid-cols-3">
+                        {offers.map((o, idx) => (
+                            <Reveal key={o.title} delay={0.05 * idx}>
+                                <TiltCard className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm backdrop-blur">
+                                    <div className="relative h-52 w-full">
+                                        <Image src={o.image} alt={o.title} fill className="object-cover transition duration-500 group-hover:scale-[1.05]" />
+                                        <div className="absolute left-4 top-4 rounded-full bg-gold-500 px-3 py-1 text-xs font-semibold text-white shadow">
+                                            {o.tag}
+                                        </div>
+                                    </div>
+                                    <div className="p-6">
+                                        <div className="text-lg font-semibold text-navy-950">{o.title}</div>
+                                        <div className="mt-2 text-sm text-navy-700">{o.desc}</div>
+                                        <Link
+                                            href={o.href}
+                                            className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-navy-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-navy-900"
+                                        >
+                                            {o.cta}
+                                        </Link>
+                                    </div>
+                                </TiltCard>
+                            </Reveal>
+                        ))}
+                    </div>
+                </Section>
+            </section>
+
         </>
     );
 }
